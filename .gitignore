@@ -1,3 +1,8 @@
+# deps
+deps/*
+!deps/fetch_windows_deps.bat
+!cmake_configs
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -8,6 +13,12 @@ __pycache__/
 
 # pycharm
 .idea
+
+# vscode
+.vscode
+
+# outputs
+out
 
 # Distribution / packaging
 .Python
