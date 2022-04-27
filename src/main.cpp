@@ -2,12 +2,15 @@
 #include <chrono>
 #include <ctime>
 #include <renderer.hpp>
+#include <scene.hpp>
 
 int main (int argc, char * args[])
 {
-    int resolution = 600;
+    int resolution = 300;
 
-    Canvas canvas (resolution, resolution);
+    Canvas   canvas (resolution, resolution);
+    Scene    scene;
+    Renderer renderer (resolution, 1, scene);
 
     std::vector<std::vector<unsigned int>> image;
     for (int i = 0; i < resolution; i++)
@@ -29,7 +32,7 @@ int main (int argc, char * args[])
         {
             for (int x = 0; x < resolution; x++)
             {
-                render_pixel (x, y, image);
+                renderer.render_pixel (x, y, image);
 
                 auto end = std::chrono::system_clock::now ();
 
@@ -45,11 +48,13 @@ int main (int argc, char * args[])
             }
             if (!running) break;
         }
+        printf ("done\n");
         while (running && !canvas.step (image)) {}
     }
 
     // Free resources and close SDL
     canvas.close ();
+    scene.close ();
 
     return 0;
 }
