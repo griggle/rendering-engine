@@ -3,6 +3,9 @@ deps/*
 !deps/fetch_windows_deps.bat
 !cmake_configs
 
+# protopye
+prototype
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
