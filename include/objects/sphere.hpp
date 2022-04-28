@@ -11,7 +11,8 @@ class Sphere : public SceneObject
     float r;
 
   public:
-    Sphere (Vec3 pos, float r);
+    Sphere (Vec3 pos, Colour col, float r);
 
     float distance2intersection (Vec3 ray_origin, Vec3 ray_direction);
+    Vec3  normal_at_point (Vec3 p);
 };

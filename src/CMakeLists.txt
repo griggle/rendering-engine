@@ -1,5 +1,7 @@
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/linalg)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/objects)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lights)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/tools)
 
 target_sources(Rendering_Engine 
     PRIVATE 

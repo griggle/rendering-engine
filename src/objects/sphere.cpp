@@ -1,6 +1,6 @@
 #include <objects/sphere.hpp>
 
-Sphere::Sphere (Vec3 pos, float r) : SceneObject (pos), r (r) {}
+Sphere::Sphere (Vec3 pos, Colour col, float r) : SceneObject (pos, col), r (r) {}
 
 float Sphere::distance2intersection (Vec3 ray_origin, Vec3 ray_direction)
 {
@@ -63,3 +63,5 @@ float Sphere::distance2intersection (Vec3 ray_origin, Vec3 ray_direction)
 
     return -1;
 }
+
+Vec3 Sphere::normal_at_point (Vec3 p) { return unit (p - pos); }

@@ -3,6 +3,9 @@
 #include <iostream>
 #include <scene.hpp>
 #include <vector>
+#include <algorithm>
+
+#include <tools/colour.hpp>
 
 class Renderer
 {
