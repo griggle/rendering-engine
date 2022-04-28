@@ -1,3 +1,5 @@
+CMakeSettings.json
+
 # deps
 deps/*
 !deps/fetch_windows_deps.bat

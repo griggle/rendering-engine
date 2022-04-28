@@ -1,6 +1,8 @@
 #include <objects/sphere.hpp>
 
-Sphere::Sphere (Vec3 pos, Colour col, float r) : SceneObject (pos, col), r (r) {}
+Sphere::Sphere (Vec3 pos, Colour col, float (*brdf) (Vec3, Vec3, Vec3), float r) : SceneObject (pos, col, brdf), r (r)
+{
+}
 
 float Sphere::distance2intersection (Vec3 ray_origin, Vec3 ray_direction)
 {

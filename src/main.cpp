@@ -6,7 +6,7 @@
 
 int main (int argc, char * args[])
 {
-    int resolution = 300;
+    int resolution = 200;
 
     Canvas   canvas (resolution, resolution);
     Scene    scene;
@@ -20,36 +20,26 @@ int main (int argc, char * args[])
         image.push_back (row);
     }
 
+    // render to buffer
+    for (int y = 0; y < resolution; y++)
+    {
+        for (int x = 0; x < resolution; x++)
+        {
+            renderer.render_pixel (x, y, image);
+            if ((y * resolution + x) % 100 == 0)
+                std::cout << 100 * ((y * resolution + x) / (1.0f * resolution * resolution)) << "%\r";
+        }
+    }
+    printf ("done\n");
+
     // Start up SDL and create window
     if (!canvas.init ())
         printf ("Failed to initialize!\n");
     else
     {
-        bool running = true;
-        auto start   = std::chrono::system_clock::now ();
-
-        for (int y = 0; y < resolution; y++)
-        {
-            for (int x = 0; x < resolution; x++)
-            {
-                renderer.render_pixel (x, y, image);
-
-                auto end = std::chrono::system_clock::now ();
-
-                std::chrono::duration<double> elapsed_seconds = end - start;
-
-                if (elapsed_seconds.count () > 1)
-                {
-                    running = !canvas.step (image);
-                    start   = std::chrono::system_clock::now ();
-                }
-
-                if (!running) break;
-            }
-            if (!running) break;
-        }
-        printf ("done\n");
-        while (running && !canvas.step (image)) {}
+        canvas.step (image);
+        canvas.screen_shot ();
+        while (!canvas.step (image)) {}
     }
 
     // Free resources and close SDL

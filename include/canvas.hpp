@@ -19,7 +19,8 @@ class Canvas
   public:
     Canvas (int width, int height);
 
-    bool init ();                         // init canvas and memory
+    bool init ();                                                // init canvas and memory
     bool step (std::vector<std::vector<unsigned int>> image);    // run a frame
-    void close ();                        // free all memory
+    void screen_shot ();
+    void close ();    // free all memory
 };
