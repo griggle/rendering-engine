@@ -6,7 +6,7 @@
 
 int main (int argc, char * args[])
 {
-    int resolution = 200;
+    int resolution = 300;
 
     Canvas   canvas (resolution, resolution);
     Scene    scene;

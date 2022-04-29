@@ -2,7 +2,7 @@
 
 
 Renderer::Renderer (int resolution, int recursion_depth, Scene scene)
-    : resolution (resolution), recursion_depth (recursion_depth), scene (scene), rng (dev ()), rand_dist (0, 0.5)
+    : resolution (resolution), recursion_depth (recursion_depth), scene (scene), rng (dev ()), rand_dist (0, 0.1)
 {
 }
 
@@ -77,8 +77,9 @@ Colour Renderer::render_equ (Vec3 origin, Vec3 direction, int depth)
             int num_scatters = 0;    // 5 * depth;
             for (int i = 0; i < num_scatters; i++)
             {
-                Vec3 random_scatter (normal.x + rand_dist (rng), normal.y + rand_dist (rng),
-                                     normal.z + rand_dist (rng));
+                Vec3 reflected = unit (reflect (direction, normal));
+                Vec3 random_scatter (reflected.x + rand_dist (rng), reflected.y + rand_dist (rng),
+                                     reflected.z + rand_dist (rng));
 
                 incoming = incoming
                            + (colour
@@ -89,6 +90,10 @@ Colour Renderer::render_equ (Vec3 origin, Vec3 direction, int depth)
 
             colour = colour + (incoming / (num_scatters + 1));
         }
+    }
+    else
+    {
+        colour = Colour (40, 40, 40);
     }
 
     return colour;

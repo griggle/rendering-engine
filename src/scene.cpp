@@ -2,7 +2,7 @@
 
 
 
-Scene::Scene () : camera (0, 0, 2)
+Scene::Scene () : camera (0, 0, 1)
 {
     objects.push_back (new Sphere (
         Vec3 (0, 0, -3), Colour (255, 0, 0, 255),
@@ -15,8 +15,23 @@ Scene::Scene () : camera (0, 0, 2)
         [] (Vec3 in, Vec3 out, Vec3 normal) { return phong (in, out, normal, 0.9, 10); }, 0.2f));
 
     objects.push_back (new Plane (
-        Vec3 (0, 2, 0), Colour (20, 20, 20, 255),
-        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.9); }, Vec3 (0, -1, 0)));
+        Vec3 (0, 2, 0), Colour (70, 70, 70, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (0, -1, 0)));
+    objects.push_back (new Plane (
+        Vec3 (0, -4, 0), Colour (0, 70, 0, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (0, 1, 0)));
+    objects.push_back (new Plane (
+        Vec3 (4, 0, 0), Colour (70, 0, 70, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (-1, 0, 0)));
+    objects.push_back (new Plane (
+        Vec3 (-4, 0, 0), Colour (0, 70, 70, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (1, 0, 0)));
+    objects.push_back (new Plane (
+        Vec3 (0, 0, -10), Colour (0, 0, 70, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (0, 0, 1)));
+    objects.push_back (new Plane (
+        Vec3 (0, 0, 5), Colour (0, 0, 70, 255),
+        [] (Vec3 in, Vec3 out, Vec3 normal) { return lambertian (in, out, normal, 0.5); }, Vec3 (0, 0, -1)));
 
 
     lights.push_back (new PointLight (Vec3 (-1, -1, -1), Vec3 (1, 1, 1)));
