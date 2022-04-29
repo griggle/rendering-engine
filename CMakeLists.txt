@@ -33,6 +33,7 @@ target_include_directories(Rendering_Engine PRIVATE include)
 
 target_link_libraries(Rendering_Engine ${SDL2_LIBRARIES})
 
+if (WIN32)
 if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
     add_custom_command(TARGET Rendering_Engine POST_BUILD        
         COMMAND ${CMAKE_COMMAND} -E copy_if_different            
@@ -44,3 +45,4 @@ else ()
             "${PROJECT_SOURCE_DIR}/${SDL2_DIR}/lib/x86/SDL2.dll"      
             $<TARGET_FILE_DIR:Rendering_Engine>)   
 endif ()
+endif(WIN32)
