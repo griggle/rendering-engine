@@ -6,7 +6,7 @@
 
 int main (int argc, char * args[])
 {
-    int resolution = 300;
+    int resolution = 900;
 
     Canvas   canvas (resolution, resolution);
     Scene    scene;
@@ -27,10 +27,10 @@ int main (int argc, char * args[])
         {
             renderer.render_pixel (x, y, image);
             if ((y * resolution + x) % 100 == 0)
-                std::cout << 100 * ((y * resolution + x) / (1.0f * resolution * resolution)) << "%\r";
+                std::cout << 100 * ((y * resolution + x) / (1.0f * resolution * resolution)) << "%            \r";
         }
     }
-    printf ("done\n");
+    printf ("done        \n");
 
     // Start up SDL and create window
     if (!canvas.init ())

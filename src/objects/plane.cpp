@@ -9,7 +9,7 @@ float Plane::distance2intersection (Vec3 ray_origin, Vec3 ray_direction)
 {
     float a = dot (normal, ray_direction);
 
-    if (abs (a) > 0.0001f) { return dot ((pos - ray_origin), normal) / a; }
+    if (fabs (a) > 0.0001f) { return dot ((pos - ray_origin), normal) / a; }
 
     return -1;
 }

@@ -58,7 +58,7 @@ float Sphere::distance2intersection (Vec3 ray_origin, Vec3 ray_direction)
     {
         double t  = (-b + sqrt (discriminant)) / (2 * a);
         double t2 = -b / a - t;
-        if (abs (t2) < abs (t)) t = t2;
+        if (fabs (t2) < fabs (t)) t = t2;
         return t;
     }
 
